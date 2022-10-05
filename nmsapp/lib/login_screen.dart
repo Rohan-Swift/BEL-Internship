@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './register.dart';
+import './screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -66,7 +68,14 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Screen(),
+                      ),
+                    );
+                  },
                   child: const Text(
                     "LOGIN",
                     style: TextStyle(
@@ -99,7 +108,14 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Register(),
+                        ),
+                      ); // Navigator
+                    },
                     child: const Text("Register Account"),
                   )
                 ],

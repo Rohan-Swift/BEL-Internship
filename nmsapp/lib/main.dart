@@ -9,7 +9,6 @@ class LoginUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: "Flutter Login UI",
       theme: ThemeData(
         primarySwatch: Colors.teal,
@@ -18,7 +17,7 @@ class LoginUI extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            "NETWORK MANAGEMENT SYSTEM",
+            "Bharat Electronics Limited",
           ),
         ),
         body: const LoginScreen(),
