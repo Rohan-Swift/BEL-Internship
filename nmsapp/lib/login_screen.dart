@@ -12,7 +12,7 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               const Text(
-                "LOGIN/SIGNUP",
+                "LOGIN",
                 style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.w900,
@@ -61,8 +61,9 @@ class LoginScreen extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
-                  gradient:
-                      const LinearGradient(colors: [Colors.blue, Colors.green]),
+                  gradient: const LinearGradient(
+                    colors: [Colors.blue, Colors.green],
+                  ),
                 ),
                 child: MaterialButton(
                   onPressed: () {},
@@ -98,7 +99,9 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                      onPressed: () {}, child: const Text("Register Account"))
+                    onPressed: () {},
+                    child: const Text("Register Account"),
+                  )
                 ],
               ),
             ],

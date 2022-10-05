@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Switch demo</string>
+    <string name="switch_2">Switch 2</string>
+    <string name="switch_1">Switch 1</string>
 </resources>
