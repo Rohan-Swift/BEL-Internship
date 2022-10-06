@@ -15,7 +15,7 @@ class _ScreenState extends State<Screen> {
       FirebaseDatabase.instance.ref().child('Switch').child('s1');
   DatabaseReference s2 =
       FirebaseDatabase.instance.ref().child('Switch').child('s2');
-  int num1=0, num2=0;
+  int num1 = 0, num2 = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,23 @@ class _ScreenState extends State<Screen> {
     s2.onValue.listen((DatabaseEvent f) {
       num2 = int.parse(f.snapshot.value.toString());
     });
+
+    Color clr() {
+      if (num1 == 1) {
+        return Colors.green;
+      } else {
+        return Colors.red;
+      }
+    }
+
+    Color clr1() {
+      if (num2 == 1) {
+        return Colors.green;
+      } else {
+        return Colors.red;
+      }
+    }
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -67,7 +84,9 @@ class _ScreenState extends State<Screen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DecoratedBox(
-                  decoration: BoxDecoration(num1? Colors.green:Colors.red),
+                  decoration: BoxDecoration(
+                    color: clr(),
+                  ),
                   child: const Padding(
                     padding: EdgeInsets.all(40),
                     child: Text(
@@ -82,7 +101,9 @@ class _ScreenState extends State<Screen> {
                   width: 50,
                 ),
                 DecoratedBox(
-                  decoration: BoxDecoration(num2? Colors.green:Colors.red),
+                  decoration: BoxDecoration(
+                    color: clr1(),
+                  ),
                   child: const Padding(
                     padding: EdgeInsets.all(40),
                     child: Text(
