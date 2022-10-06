@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                      onPressed: () {}, child: const Text("Forget Password?"))
+                      onPressed: () {}, child: const Text("Forgot Password?"))
                 ],
               ),
               const SizedBox(

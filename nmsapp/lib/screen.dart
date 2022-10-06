@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import './main.dart';
 
@@ -10,9 +11,23 @@ class Screen extends StatefulWidget {
 }
 
 class _ScreenState extends State<Screen> {
+  DatabaseReference s1 =
+      FirebaseDatabase.instance.ref().child('Switch').child('s1');
+  DatabaseReference s2 =
+      FirebaseDatabase.instance.ref().child('Switch').child('s2');
+  int num1=0, num2=0;
+
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
+
+    s1.onValue.listen((DatabaseEvent e) {
+      num1 = int.parse(e.snapshot.value.toString());
+    });
+
+    s2.onValue.listen((DatabaseEvent f) {
+      num2 = int.parse(f.snapshot.value.toString());
+    });
     return Scaffold(
       body: Center(
         child: Column(
@@ -50,10 +65,10 @@ class _ScreenState extends State<Screen> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 DecoratedBox(
-                  decoration: BoxDecoration(color: Colors.red),
-                  child: Padding(
+                  decoration: BoxDecoration(num1? Colors.green:Colors.red),
+                  child: const Padding(
                     padding: EdgeInsets.all(40),
                     child: Text(
                       'Switch 1',
@@ -63,12 +78,12 @@ class _ScreenState extends State<Screen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 50,
                 ),
                 DecoratedBox(
-                  decoration: BoxDecoration(color: Colors.green),
-                  child: Padding(
+                  decoration: BoxDecoration(num2? Colors.green:Colors.red),
+                  child: const Padding(
                     padding: EdgeInsets.all(40),
                     child: Text(
                       'Switch 2',
