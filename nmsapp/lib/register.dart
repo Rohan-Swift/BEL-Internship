@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import './main.dart';
 
@@ -9,6 +11,16 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final email = TextEditingController();
+  final password = TextEditingController();
+
+  Future signup() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: email.text.trim(),
+      password: password.text.trim(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +57,7 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
+                  controller: email,
                   decoration: const InputDecoration(
                     labelText: "Enter Email",
                     border: OutlineInputBorder(),
@@ -56,12 +69,12 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.visiblePassword,
+                  controller: password,
                   obscureText: true,
                   decoration: const InputDecoration(
                     labelText: "Enter Password",
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.lock),
-                    suffixIcon: Icon(Icons.remove_red_eye),
                   ),
                 ),
                 const SizedBox(
@@ -73,11 +86,22 @@ class _RegisterState extends State<Register> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                     gradient: const LinearGradient(
-                      colors: [Colors.blue, Colors.green],
+                      colors: [
+                        Colors.blue,
+                        Colors.green,
+                      ],
                     ),
                   ),
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      signup();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginUI(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "REGISTER",
                       style: TextStyle(
@@ -104,7 +128,7 @@ class _RegisterState extends State<Register> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an Account?",
+                      "Already have an account?",
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.7),
                       ),

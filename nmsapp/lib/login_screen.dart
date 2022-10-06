@@ -1,9 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import './register.dart';
-import './screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final email = TextEditingController();
+  final password = TextEditingController();
+
+  Future login() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email.text.trim(),
+      password: password.text.trim(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +41,7 @@ class LoginScreen extends StatelessWidget {
               ),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
+                controller: email,
                 decoration: const InputDecoration(
                   labelText: "Enter email",
                   border: OutlineInputBorder(),
@@ -37,12 +53,12 @@ class LoginScreen extends StatelessWidget {
               ),
               TextFormField(
                 keyboardType: TextInputType.visiblePassword,
+                controller: password,
                 obscureText: true,
                 decoration: const InputDecoration(
                   labelText: "Enter Password",
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.remove_red_eye),
                 ),
               ),
               const SizedBox(
@@ -69,12 +85,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Screen(),
-                      ),
-                    );
+                    login();
                   },
                   child: const Text(
                     "LOGIN",
@@ -102,7 +113,7 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an Account?",
+                    "Don't have an account?",
                     style: TextStyle(
                       color: Colors.black.withOpacity(0.7),
                     ),
@@ -116,7 +127,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ); // Navigator
                     },
-                    child: const Text("Register Account"),
+                    child: const Text("Register now!"),
                   )
                 ],
               ),

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>342715474901-h5l745uop9bsiefmtg730c2e6kaain2q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.342715474901-h5l745uop9bsiefmtg730c2e6kaain2q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDqIwopN4rSIo6hTZ8ArKM3g22ZcpUlJV0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>342715474901</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.nmsproject</string>
+	<key>PROJECT_ID</key>
+	<string>bel-nms</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bel-nms.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:342715474901:ios:3f4a07b3eba19c3148135c</string>
+	<key>DATABASE_URL</key>
+	<string>https://bel-nms-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
