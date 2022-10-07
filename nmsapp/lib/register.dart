@@ -18,6 +18,7 @@ class _RegisterState extends State<Register> {
       email: email.text.trim(),
       password: password.text.trim(),
     );
+    FirebaseAuth.instance.signOut();
   }
 
   @override
