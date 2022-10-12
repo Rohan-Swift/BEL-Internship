@@ -29,21 +29,21 @@ class _ScreenState extends State<Screen> {
       num2 = int.parse(f.snapshot.value.toString());
     });
 
-    Color clr() {
-      if (num1 == 1) {
-        return Colors.green;
-      } else {
-        return Colors.red;
-      }
-    }
+    // Color clr() {
+    //   if (num1 == 1) {
+    //     return Colors.green;
+    //   } else {
+    //     return Colors.red;
+    //   }
+    // }
 
-    Color clr1() {
-      if (num2 == 1) {
-        return Colors.green;
-      } else {
-        return Colors.red;
-      }
-    }
+    // Color clr1() {
+    //   if (num2 == 1) {
+    //     return Colors.green;
+    //   } else {
+    //     return Colors.red;
+    //   }
+    // }
 
     return Scaffold(
       body: Center(
@@ -85,7 +85,7 @@ class _ScreenState extends State<Screen> {
               children: [
                 DecoratedBox(
                   decoration: BoxDecoration(
-                    color: clr(),
+                    color: num1 == 1 ? Colors.green : Colors.red,
                   ),
                   child: const Padding(
                     padding: EdgeInsets.all(40),
@@ -102,7 +102,7 @@ class _ScreenState extends State<Screen> {
                 ),
                 DecoratedBox(
                   decoration: BoxDecoration(
-                    color: clr1(),
+                    color: num2 == 1 ? Colors.green : Colors.red,
                   ),
                   child: const Padding(
                     padding: EdgeInsets.all(40),
@@ -113,6 +113,27 @@ class _ScreenState extends State<Screen> {
                       ),
                     ),
                   ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      s1.onValue.listen((DatabaseEvent e) {
+                        num1 = int.parse(e.snapshot.value.toString());
+                      });
+                      s2.onValue.listen((DatabaseEvent e) {
+                        num2 = int.parse(e.snapshot.value.toString());
+                      });
+                    });
+                  },
+                  child: const Text('Refresh'),
                 ),
               ],
             ),
@@ -132,7 +153,7 @@ class _ScreenState extends State<Screen> {
                   size: 40,
                 ),
               ],
-            ),
+            )
           ],
         ),
       ),
